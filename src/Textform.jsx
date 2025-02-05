@@ -46,13 +46,13 @@ function Textform(props) {
   }
 
   return (<>
-    <div className="mb-3 container">
+    <div className="mb-3 container d-flex flex-column">
         <h4>{props.heading}</h4>
         <div className="mb-3">
         <textarea className="form-control" id="exampleFormControlTextarea1" value={text} rows="8" placeholder='Enter Text' onChange={updatePara}></textarea>
         </div>
-        <div className='Controls'>
-        <button className="btn btn-primary mx-2" onClick={convertToUpper} disabled={text===""?true:false}>Convert to uppercase</button>
+        <div className='Controls container d-flex justify-content-evenly'>
+        <button className="btn btn-primary" onClick={convertToUpper} disabled={text===""?true:false}>Convert to uppercase</button>
         <button className="btn btn-primary mx-2" onClick={convertToLower} disabled={text===""?true:false}>Convert to lowercase</button>
         <button className="btn btn-primary mx-2" onClick={Capitalize} disabled={text===""?true:false}>Capitalize</button>
         <button className="btn btn-primary mx-2" onClick={speak} disabled={text===""?true:false}>Speak</button>
@@ -60,7 +60,7 @@ function Textform(props) {
         <button className="btn btn-danger mx-2" onClick={clearText} disabled={text===""?true:false}>Clear Text</button>
         </div>
     </div>
-    <div className='my-5 container'>
+    <div className='my-5 container d-flex flex-column'>
       <h4>Text Summary</h4>
       <p className='container my-3'>Your text container {text=="" ? "0":text.split(" ").length} words and {text.length} chars</p>
       <h4>Preview</h4>
