@@ -3,11 +3,6 @@ import { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Textform from './Textform'
 import Alert from './Alert';
-import About from './About';
-import {BrowserRouter as Router,
-  Routes,
-  Route,
- } from 'react-router-dom';
 
 function App() {
   const [mode, setMode] = useState("Light");
@@ -58,18 +53,10 @@ function App() {
 
   return (
     <>
-    <Router>
       {/* <Navbar title="TextUtils" about="About Us" mode = {mode} changeMode = {changeMode} bgColor = {bgColor} updateBgColor = {updateBgColor}/> */}
       <Navbar title="TextUtils" about="About Us" mode = {mode} changeMode = {changeMode} />
       <Alert alert={alert}></Alert>
-      <Routes>
-        <Route exact path='/about' element={<About/>}>
-        </Route>
-        <Route exact path='/' element={<Textform heading="Enter your text below" updateAlert = {updateAlert}/>}>
-        </Route>
-      </Routes>
-      
-      </Router>
+      <Textform heading="Enter your text below" updateAlert = {updateAlert}/>
     </>
   )
 }
