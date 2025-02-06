@@ -40,31 +40,39 @@ function Textform(props) {
   }
 
   let copy = ()=>{
-    let textBox = document.querySelector("#exampleFormControlTextarea1")
-    navigator.clipboard.writeText(textBox.value)
+    navigator.clipboard.writeText(text)
     props.updateAlert("Content copied to clipboard","success")
   }
 
   return (<>
-    <div className="mb-3 container d-flex flex-column my-3">
+    <div className="mb-3 container d-flex flex-column my-2">
         <h4>{props.heading}</h4>
         <div className="mb-3">
-        <textarea className="form-control" id="exampleFormControlTextarea1" value={text} rows="8" placeholder='Enter Text' onChange={updatePara}></textarea>
+        <textarea className="form-control" style={{backgroundColor: props.mode==='Dark'?'#5b5474':'white', color:props.mode==='Dark'?'white':'black'}} id="exampleFormControlTextarea1" value={text} rows="8" placeholder='Enter Text' onChange={updatePara}></textarea>
         </div>
         <div className='Controls container d-flex justify-content-evenly flex-wrap'>
-        <button className="btn btn-primary my-2" onClick={convertToUpper} disabled={text===""?true:false}>Convert to uppercase</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={convertToLower} disabled={text===""?true:false}>Convert to lowercase</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={Capitalize} disabled={text===""?true:false}>Capitalize</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={speak} disabled={text===""?true:false}>Speak</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={copy} disabled={text===""?true:false}>Copy</button>
-        <button className="btn btn-danger mx-2 my-2" onClick={clearText} disabled={text===""?true:false}>Clear Text</button>
+        <button className="btn btn-primary my-2" onClick={convertToUpper} disabled={((text.split(/\s+/)).filter(
+          (val)=>{return val.length!=0;})).length>0?false:true}>Convert to uppercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={convertToLower} disabled={((text.split(/\s+/)).filter(
+          (val)=>{return val.length!=0;})).length>0?false:true}>Convert to lowercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={Capitalize} disabled={((text.split(/\s+/)).filter(
+          (val)=>{return val.length!=0;})).length>0?false:true}>Capitalize</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={speak} disabled={((text.split(/\s+/)).filter(
+          (val)=>{return val.length!=0;})).length>0?false:true}>Speak</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={copy} disabled={((text.split(/\s+/)).filter(
+          (val)=>{return val.length!=0;})).length>0?false:true}>Copy</button>
+        <button className="btn btn-danger mx-2 my-2" onClick={clearText} disabled={((text.split(/\s+/)).filter(
+          (val)=>{return val.length!=0;})).length>0?false:true}>Clear Text</button>
         </div>
     </div>
     <div className='my-5 container d-flex flex-column'>
       <h4>Text Summary</h4>
-      <p className='container my-3'>Your text container {text=="" ? "0":text.split(" ").length} words and {text.length} chars</p>
+      <p className='container my-3'>Your text container {((text.split(/\s+/)).filter((val)=>{
+        return val.length!=0;
+      })).length} words and {text.length} chars</p>
       <h4>Preview</h4>
-      <p className='container my-3 form-control' >{text?text:"Enter something to preview"}</p>
+      <p style={{backgroundColor: props.mode==='Dark'?'#5b5474':'white', color:props.mode==='Dark'?'white':'black'}} className='container my-3 form-control' >{((text.split("/\s+/")).filter(
+          (val)=>{return val.length!=0;})).length>0?text:"Enter something to preview"}</p>
     </div>
 
   </>  
