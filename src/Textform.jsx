@@ -46,18 +46,18 @@ function Textform(props) {
   }
 
   return (<>
-    <div className="mb-3 container d-flex flex-column">
+    <div className="mb-3 container d-flex flex-column my-3">
         <h4>{props.heading}</h4>
         <div className="mb-3">
         <textarea className="form-control" id="exampleFormControlTextarea1" value={text} rows="8" placeholder='Enter Text' onChange={updatePara}></textarea>
         </div>
-        <div className='Controls container d-flex justify-content-evenly'>
-        <button className="btn btn-primary" onClick={convertToUpper} disabled={text===""?true:false}>Convert to uppercase</button>
-        <button className="btn btn-primary mx-2" onClick={convertToLower} disabled={text===""?true:false}>Convert to lowercase</button>
-        <button className="btn btn-primary mx-2" onClick={Capitalize} disabled={text===""?true:false}>Capitalize</button>
-        <button className="btn btn-primary mx-2" onClick={speak} disabled={text===""?true:false}>Speak</button>
-        <button className="btn btn-primary mx-2" onClick={copy} disabled={text===""?true:false}>Copy</button>
-        <button className="btn btn-danger mx-2" onClick={clearText} disabled={text===""?true:false}>Clear Text</button>
+        <div className='Controls container d-flex justify-content-evenly flex-wrap'>
+        <button className="btn btn-primary my-2" onClick={convertToUpper} disabled={text===""?true:false}>Convert to uppercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={convertToLower} disabled={text===""?true:false}>Convert to lowercase</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={Capitalize} disabled={text===""?true:false}>Capitalize</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={speak} disabled={text===""?true:false}>Speak</button>
+        <button className="btn btn-primary mx-2 my-2" onClick={copy} disabled={text===""?true:false}>Copy</button>
+        <button className="btn btn-danger mx-2 my-2" onClick={clearText} disabled={text===""?true:false}>Clear Text</button>
         </div>
     </div>
     <div className='my-5 container d-flex flex-column'>
@@ -67,8 +67,7 @@ function Textform(props) {
       <p className='container my-3 form-control' >{text?text:"Enter something to preview"}</p>
     </div>
 
-  </>
-    
+  </>  
   )
 }
 Textform.propTypes = {
