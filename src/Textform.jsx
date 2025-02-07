@@ -71,7 +71,7 @@ function Textform(props) {
         return val.length!=0;
       })).length} words and {text.length} chars</p>
       <h4>Preview</h4>
-      <p style={{backgroundColor: props.mode==='Dark'?'#5b5474':'white', color:props.mode==='Dark'?'white':'black'}} className='container my-3 form-control' >{((text.split("/\s+/")).filter(
+      <p style={{backgroundColor: props.mode==='Dark'?'#5b5474':'white', color:props.mode==='Dark'?'white':'black'}} className='container my-3 form-control' >{((text.split(/\s+/)).filter(
           (val)=>{return val.length!=0;})).length>0?text:"Enter something to preview"}</p>
     </div>
 
